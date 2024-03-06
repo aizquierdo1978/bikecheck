@@ -1,4 +1,4 @@
-package com.aizquierdo.bikecheck.infrastructure.repository;
+package com.aizquierdo.bikecheck.infrastructure.bike.repository;
 
 import com.aizquierdo.bikecheck.domain.bike.entity.Bike;
 import com.aizquierdo.bikecheck.domain.bike.repository.BikeRepository;
@@ -18,8 +18,7 @@ public class BikeRepositoryJpaImpl implements BikeRepository {
 
     @Autowired
     private BikeCrudRepository bikeCrudRepository;
-
-
+    
     @Override
     public Bike findById(Long bikeId) {
         Optional<BikeEntity> bike = bikeCrudRepository.findById(bikeId);
