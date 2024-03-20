@@ -17,13 +17,14 @@ public class FindBikeUseCaseImpl implements FindBikeUseCase {
 
     @Override
     public Bike execute(final Long bikeId) {
-        bikeExists(bikeId);
-        return bikeRepository.findById(bikeId);
+        return bikeExists(bikeId);
     }
 
-    private void bikeExists(final Long bikeId) {
-        if (bikeRepository.findById(bikeId) == null) {
+    private Bike bikeExists(final Long bikeId) {
+        Bike bike = bikeRepository.findById(bikeId);
+        if (bike == null) {
             throw new EntityNotFoundException("Bike with id " + bikeId + " not exists");
         }
+        return bike;
     }
 }
