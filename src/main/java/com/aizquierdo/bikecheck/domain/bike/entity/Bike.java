@@ -1,12 +1,18 @@
 package com.aizquierdo.bikecheck.domain.bike.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Bike implements Serializable {
 
     @Serial
@@ -27,13 +33,5 @@ public class Bike implements Serializable {
     private LocalDateTime deleteDate;
 
     private String deleteUser;
-
-    public Bike() {
-        super();
-    }
-
-    public Bike(String bikeName) {
-        super();
-        this.bikeName = bikeName;
-    }
+    
 }

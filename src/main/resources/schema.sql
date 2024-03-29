@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS BIKE
    modificationUser varchar(255),
    deleteDate timestamp,
    deleteUser varchar(255),
-   primary key(bikeId)
+   PRIMARY KEY(bikeId)
 );
 
 CREATE TABLE IF NOT EXISTS BIKEPART
@@ -21,5 +21,21 @@ CREATE TABLE IF NOT EXISTS BIKEPART
    modificationUser varchar(255),
    deleteDate timestamp,
    deleteUser varchar(255),
-   primary key(bikePartId)
+   PRIMARY KEY(bikePartId)
+);
+
+CREATE TABLE IF NOT EXISTS BIKESPECS
+(
+   bikeSpecsId bigint  NOT NULL,
+   bikeId bigint  NOT NULL,
+   bikePartId bigint NOT NULL,
+   creationDate timestamp NOT NULL,
+   creationUser varchar(255) NOT NULL,
+   modificationDate timestamp,
+   modificationUser varchar(255),
+   deleteDate timestamp,
+   deleteUser varchar(255),
+   PRIMARY KEY(bikeSpecsId),
+   FOREIGN KEY (bikeId) REFERENCES BIKE,
+   FOREIGN KEY (bikePartId) REFERENCES BIKEPART(bikePartId)
 );

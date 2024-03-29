@@ -11,9 +11,10 @@ import java.util.Date;
 @Data
 @Builder
 public class Common implements Serializable {
-    
+
     @Serial
     private static final long serialVersionUID = 4457999304241268475L;
+
     private Date creationDate;
 
     private String creationUser;

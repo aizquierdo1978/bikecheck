@@ -1,4 +1,4 @@
-package com.aizquierdo.bikecheck.domain.bikepart.entity;
+package com.aizquierdo.bikecheck.domain.bikespecs.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,14 +13,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BikePart implements Serializable {
+public class BikeSpecs implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -5326215524545454110L;
+    private static final long serialVersionUID = 5683603591623587916L;
+
+    private Long bikeSpecsId;
+
+    private Long bikeId;
 
     private Long bikePartId;
-
-    private String bikePartName;
 
     private LocalDateTime creationDate;
 
