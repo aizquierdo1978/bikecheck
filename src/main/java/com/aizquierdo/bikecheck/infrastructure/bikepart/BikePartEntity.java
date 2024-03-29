@@ -1,4 +1,4 @@
-package com.aizquierdo.bikecheck.infrastructure.bike;
+package com.aizquierdo.bikecheck.infrastructure.bikepart;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,16 +12,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class BikeEntity implements Serializable {
+public class BikePartEntity implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -2596800498077918477L;
+    private static final long serialVersionUID = -6788776144906995163L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long bikeId;
+    private Long bikePartId;
 
-    private String bikeName;
+    private String bikePartName;
 
     private LocalDateTime creationDate;
 
@@ -35,16 +35,16 @@ public class BikeEntity implements Serializable {
 
     private String deleteUser;
 
-    public BikeEntity() {
+    public BikePartEntity() {
         super();
     }
 
-    public BikeEntity(Long bikeId) {
-        this.bikeId = bikeId;
+    public BikePartEntity(Long bikePartId) {
+        this.bikePartId = bikePartId;
     }
 
-    public BikeEntity(Long bikeId, String bikeName) {
-        this.bikeId = bikeId;
-        this.bikeName = bikeName;
+    public BikePartEntity(Long bikePartId, String bikePartName) {
+        this.bikePartId = bikePartId;
+        this.bikePartName = bikePartName;
     }
 }

@@ -1,4 +1,4 @@
-package com.aizquierdo.bikecheck.domain.bike.entity;
+package com.aizquierdo.bikecheck.domain.bikepart.entity;
 
 import lombok.Data;
 
@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Bike implements Serializable {
+public class BikePart implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 1454643248432047118L;
+    private static final long serialVersionUID = -5326215524545454110L;
 
-    private Long bikeId;
+    private Long bikePartId;
 
-    private String bikeName;
+    private String bikePartName;
 
     private LocalDateTime creationDate;
 
@@ -28,12 +28,12 @@ public class Bike implements Serializable {
 
     private String deleteUser;
 
-    public Bike() {
+    public BikePart() {
         super();
     }
 
-    public Bike(String bikeName) {
+    public BikePart(String bikePartName) {
         super();
-        this.bikeName = bikeName;
+        this.bikePartName = bikePartName;
     }
 }
