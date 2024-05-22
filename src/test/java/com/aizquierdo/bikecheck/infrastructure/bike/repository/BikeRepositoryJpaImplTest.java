@@ -1,10 +1,11 @@
-package com.aizquierdo.bikecheck.infrastructure.bike.repository.BikeRepositoryJpaImplTest;
+package com.aizquierdo.bikecheck.infrastructure.bike.repository;
 
 import com.aizquierdo.bikecheck.domain.bike.entity.Bike;
 import com.aizquierdo.bikecheck.infrastructure.bike.BikeEntity;
 import com.aizquierdo.bikecheck.infrastructure.bike.mapper.BikeMapperImpl;
 import com.aizquierdo.bikecheck.infrastructure.bike.repository.BikeCrudRepository;
 import com.aizquierdo.bikecheck.infrastructure.bike.repository.BikeRepositoryJpaImpl;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,14 +18,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+import static com.aizquierdo.bikecheck.TestConstants.BIKE_ID_1;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BikeRepositoryJpaImplTest {
-
-    private static final Long BIKE_ID_1 = 1L;
 
     private static final Long BIKE_ID_2 = 2L;
 
@@ -45,6 +45,7 @@ public class BikeRepositoryJpaImplTest {
     @InjectMocks
     private BikeRepositoryJpaImpl bikeRepositoryJpa;
 
+    @DisplayName("findById with existing id should return expected bike")
     @Test
     void test_findById_1() {
 
@@ -60,6 +61,7 @@ public class BikeRepositoryJpaImplTest {
         validateBike(bike, bikeEntity);
     }
 
+    @DisplayName("create with informed data should return created bike")
     @Test
     void test_create_1() {
 
@@ -77,13 +79,12 @@ public class BikeRepositoryJpaImplTest {
         validateBike(createdBike, bikeEntity);
     }
 
+    @DisplayName("findAll should return all existing bikes")
     @Test
     void test_findAll_1() {
 
         // Given
-        List<BikeEntity> bikeEntityList = List.of(
-                buildBikeEntity(BIKE_ID_1, BIKE_NAME_1),
-                buildBikeEntity(BIKE_ID_2, BIKE_NAME_2));
+        List<BikeEntity> bikeEntityList = List.of(buildBikeEntity(BIKE_ID_1, BIKE_NAME_1), buildBikeEntity(BIKE_ID_2, BIKE_NAME_2));
 
         when(this.bikeCrudRepository.findAll()).thenReturn(bikeEntityList);
 
@@ -100,6 +101,7 @@ public class BikeRepositoryJpaImplTest {
 
     }
 
+    @DisplayName("update with existing bike should return updated bike")
     @Test
     void test_update_1() {
 
@@ -117,14 +119,11 @@ public class BikeRepositoryJpaImplTest {
         validateBike(updatedBike, bikeEntity);
     }
 
+    @DisplayName("delete with existing bike should delete bike")
     @Test
     void test_delete_1() {
 
         // Given
-        Bike bike = buildBike(BIKE_ID_1, BIKE_NAME_2);
-
-        BikeEntity bikeEntity = buildBikeEntity(BIKE_ID_1, BIKE_NAME_2);
-        
         doNothing().when(this.bikeCrudRepository).deleteById(BIKE_ID_1);
 
         // When
